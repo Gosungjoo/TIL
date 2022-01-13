@@ -2,7 +2,7 @@
 ##  git 구조 4단계<br>
 * RemoteRepo.<br>
 * LocalRepo.<br>
-* Staging Area <commit 대기실><br>
+* Staging Area (commit 대기실)<br>
 * 작업 폴더
 <br><br>
 
@@ -150,4 +150,95 @@ System Software 중  유닉스 계열이다.
 <br>
 
 #  Unix CLI 명령어
-##
+### *remind*
+* git
+* github
+* github desktop
+
+## Bash
+```
+ 현재 디렉토리 폴더 확인
+
+* ls
+
+```
+```
+ 폴더 이동 
+
+* cd [폴더명]
+* cd 경로/경로/경로/[폴더명]
+
+```
+```
+ 상위 폴더 이동
+
+* cd ..
+
+```
+```
+확장자 만들기
+
+* touch [파일이름.확장자]
+* touch 폴더/폴더 .../[파일이름.확장자]
+```
+```
+폴더만들기
+
+* mkdir [폴더이름]
+* mkdir 경로/경로.../[폴더이름]
+```
+```
+rm -r[파일 or 디렉토리]
+
+ 파일지우기
+   -r옵션은 하위 디렉토리를 포함하여 삭제한다.
+```
+
+## bash Tip
+
+<br> <br>
+```
+경로(path) 표시는 윈도우에서는   \(역슬래쉬)   이지만
+Unix 기반에서는   /(슬래쉬)   이다.
+```
+- Unix
+> folder/aaa.txt
+- Window
+> floder\aaa.txt
+<br> 
+
+```
+화살표 위 키를 누르면 이전에 쓴 명령어가 자동입력된다.
+```
+1. 명령어 입력한다.
+> &nbsp;<br>
+> user touch aaa.txt*현재라인*
+> &nbsp;<br>
+2. 빈 라인이 생긴다
+> &nbsp;<br>
+> user touch aaa.txt <br>
+> *실행결과*<br>
+> &nbsp;<br>
+> user  *현재라인* <br>
+3. 화살표 위키를 누른다.
+> &nbsp;<br>
+> user touch aaa.txt <br>
+> *실행결과*<br>
+> &nbsp;<br>
+> user touch aaa.txt *현재라인* <br>
+
+<br> <br>
+
+```
+
+Tap 키를 누르면 디렉토리나 폴더 이름 자동완성 된다.
+
+```
+> user cd a <br>
+
+탭을 누른다.
+
+> user cd aaa.txt <br>
+
+
+---
