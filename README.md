@@ -1,9 +1,9 @@
 # TIL
 ##  git 구조 4단계<br>
-RemoteRepo.<br>
-LocalRepo.<br>
-Staging Area <commit 대기실><br>
-작업 폴더
+* RemoteRepo.<br>
+* LocalRepo.<br>
+* Staging Area <commit 대기실><br>
+* 작업 폴더
 <br><br>
 
 
@@ -20,6 +20,7 @@ Staging Area <commit 대기실><br>
 ## ignore
 * ignore 파일 생성 (.gitignore)<br>
 <br>
+
 ### 해당 파일 양식
 
 <br>
@@ -43,6 +44,7 @@ Staging Area <commit 대기실><br>
 
 <br><br>
 ---
+
 ## 인증 Factor
 
 * Single Factor 인증
@@ -125,19 +127,27 @@ System Software 중  유닉스 계열이다.
         왜 쓰죠?
 
     * CLI를 사용하는 이유
-        > 프로그램 10개를 GUI에서 설치한다면?
+        > 여러개 설치/관리시 불편하다.
 
-            설치 ..클릭 ..설치 클릭....
+            프로그램 10개를 GUI에서 설치한다면?
+            
+            GUI > 설치 ..클릭 ..설치 클릭....
+                  설치 ..클릭 ..설치 클릭....
+                  설치 ..클릭 ..설치 클릭....
+                  설치 ..클릭 ..설치 클릭....
+                  설치 ..클릭 ..설치 클릭....
+                  ..
+                  ..
+                  ..
 
-        > 프로그램 10개를 CLI에서 설치한다면?
-
-            pip install - ...
-            위 한 줄이면 끝
-            버전이 바뀌어도 동일
+            CLI > pip install - ...
 
         > *(중요) 멋있어 보인다* 
 
 
 ---
+<br>
+<br>
+
 #  Unix CLI 명령어
 ##
