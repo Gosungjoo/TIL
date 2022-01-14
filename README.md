@@ -89,7 +89,7 @@ git status
     새로 만든 파일일 경우 한 번만 해주면 된다.
 
 
-# **커밋 하기 (Commit)**
+## **커밋 하기 (Commit)**
 ```
 
 git commit -m "메모 남길 내용"
@@ -98,7 +98,7 @@ git commit -m "메모 남길 내용"
 
 
 
-# **클론 하기 (Clone)**
+## **클론 하기 (Clone)**
 
 
 
@@ -141,7 +141,7 @@ git remote -v
 <br><br>
 
 
-# **푸쉬(Push)**
+## **푸쉬(Push)**
 
 ```
 git push
