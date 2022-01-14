@@ -403,13 +403,13 @@ list[::-1]
 *사용 방법은 여러방법이 있지만 형식은 map(함수,list)*
 
 ```
-list = [1,2,3,4,5]
+mylist = [1,2,3,4,5]
 
 def puls(x):
     return x+1
 
 
-list2 = list(map(puls,list))
+list2 = list(map(puls,mylist))
 
 
 
@@ -422,7 +422,7 @@ list2 = list(map(puls,list))
 
 ```
 b = lambda x : x + 1
-list2 = list(map(b,list))
+list3 = list(map(b,mylist))
 
 ```
 
