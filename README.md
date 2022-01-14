@@ -69,10 +69,12 @@ code .
 
 
 
-# **Staging Area에 등록하기 (Add)**
+## **Staging Area에 등록하기 (Add)**
+
 ```
 git add .
 ```
+
 
 * Staging Area 확인하기
 
@@ -95,29 +97,40 @@ git commit -m "메모 남길 내용"
 ```
 
 
+
 # **클론 하기 (Clone)**
-    1. *클론 할 주소를 **github** 에서 얻는다.*
 
-    ```
-    (클립보드)https://github.com/Gosungjoo/public-7-.git
+
+
+   1. *클론 할 주소를 **github** 에서 얻는다.*
+
+
+   ```
+   (클립보드)https://github.com/Gosungjoo/public-7-.git
     
-    ```
+   ```
 
-    2. *작업 디렉토리를 준비하고 이동한다.*
-    ```
+
+   2. *작업 디렉토리를 준비하고 이동한다.*
+   ```
     
-    mkdir work2
+   mkdir work2
 
-    cd work2
+   cd work2
 
-    ```
+   ```
 
-    3. *git Clone 작성*
-    ```
-    git clone https://github.com/Gosungjoo/public-7-.git
 
-    ```
+   3. *git Clone 작성*
+   ```
+   git clone https://github.com/Gosungjoo/public-7-.git
 
+   ```
+
+
+<br><br>
+
+---
 
 <br><br>
 * Remote repo 설정 보기
@@ -125,9 +138,13 @@ git commit -m "메모 남길 내용"
 git remote -v
 ```
 
+<br><br>
+
 
 # **푸쉬(Push)**
+
 ```
 git push
+
 ```
 
