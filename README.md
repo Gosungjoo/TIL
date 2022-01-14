@@ -173,5 +173,53 @@ git push
     * Staging Area에 올라간 상태
 <br><br>
 
+
+## init 설정을 해제하기
+삭제시
+```
+rm -rf .git
+```
+```
+-r 하위 디렉토리
+-f 숨김 폴더까지
+```
+<br><br>
+
+---
+
+# 총 정리
+1. *해당 폴더로 이동한다.*
+    ```
+    cd //(작업 디렉토리)
+    ```
+2. *git init을 통해 Local Repo에 등록한다.*
+
+    ```
+    git init
+    ```
+3. *git add . 을 통해 Stage Area에 등록한다*
+    ```
+    cd //(내가 원하는 디렉토리)
+    git init
+    git add .
+    ```
+4. *git commit 을 통해 Stage Area에 있는 파일을 Local Repo에 등록한다.*
+    ```
+    git commit -m "메모 남길 내용"
+    ```
+
+5. *git push 하면 연결된 Remote Repo에 Push한다.*
+    ```
+    git push
+    ```
+
+6. *Remote Repo(@github.com)에서 결과를 확인한다.*
+    
+
+
+
+
+
+
 # Git Book 교안
  https://git-scm.com/book/ko/v2/
