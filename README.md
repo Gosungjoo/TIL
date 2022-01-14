@@ -148,3 +148,30 @@ git push
 
 ```
 
+<br><br>
+
+---
+
+
+## Git 파일의 상태
+
+
+* Untracked
+    * git이 관리하지 않는 파일.
+
+* Tracked
+    * git이 관리하는 파일
+
+
+
+* Unmodified
+    * 최신 상태
+
+* Modified
+    *  수정되었지만 아직 Staging Area에는 반영하지 않은 상태
+* Staged
+    * Staging Area에 올라간 상태
+<br><br>
+
+# Git Book 교안
+ https://git-scm.com/book/ko/v2/
