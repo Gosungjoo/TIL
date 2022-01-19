@@ -1,196 +1,120 @@
-# Algorithm
+# 0119
+## 재귀함수
 
-# 1. 무식하게 풀기
-##  brute -force, exhausive search
----
-<br>
-
-* 모든 경우의 수를 나열하면서 답을 찾는 방법
-
-
-``` 
-Q. 가장 짧은 경로의 수를 찾아라
-A. 모든 경로를 나열하고 제일 짧은 것 출력
+*함수 안에서 자신 혹은 다른 함수를 참고하여 트리를 만드는 형태*
 
 
 ```
----
-<br>
+def bbq(n):
+    if(n < 0):
+        return 
+    bbq(n-1)
+    print(n)
 
-*  왜 쓰나요?
-```
-컴퓨터가 풀기에는 쉽지만
-
-손으로 풀기에는 어려운 문제를 위해
-```
----
-<br>
-
-*예를 들어 봅시다.*
-<br>
-```
-10명의 학생을 일렬로 세우는데
-사이가 안좋은 학생들이 쌍별로 있습니다.
-이들은 붙이면 안된다고 할 때 경우의 수는 어떻게 될까요?
-```
-*수학적 해법*
-```
-모든 경우의 수 10!
-사이가 안좋은 학생이 1쌍일 경우 9!
-10! - 9!
-
-사이가 안좋은 학생이 2쌍일 경우 8!
-10! - 9! + 2*8!
-....
-
-일반항
-N! - (N-1)! + 2*(N-2)!  ... ((-1)^k)*(k)*(N-k)!
 
 
 ```
 
 
-
-*무식하게 풀기*
-```
-모든 경우의 수 나열
-사이가 안좋은 경우의 수 나열
-모든 경우의 수 - 사이가 안좋은 경우의 수
-```
-
-## 한줄정리
- * 전부 나열하고 해당되는 것만 푼다.
-
----
-<br><br><br><br>
-
-# 2. 재귀 호출과 완전 탐색
-## 2-1 재귀 호출
-
-* 왜 쓰나요?
-```
-완전한 동일한 기능의 함수를
-함수내에서 호출하여 마치 반복문처럼 활용하는 것
 ```
 
 
-*예시*
-```
-def sum(n):
-    ret = 0
-    for i in range(1,n+1):
-        ret += i
-    return ret
-```
-
-```
- def recursiveSum(n):
-    if(n == 1):
-        return 1
-    return n + recursiveSum(n-1)
-```
-
-*무슨 차이가 있을까요?*
- 
-
-## *기저사례(중요)*
-```
-쪼개지지  않는 가장 작은 작업들을 가리켜 기저사례라고 한다.
- 
- 위 경우에서는 n == 1 이 아닐 경우 정상 작동하지만
-n이 1과 같거나 작을 경우 오류를 가지게 된다.
-따라서 n == 1을 기저사례로 둔다.
-
-```
----
-## 예제
- 
-[보글문제](http://algospot.com/judge/problem/read/BOGGLE)
-
-1. 문제의 분할
-```
- hasWord(y,x,word)
-
-보글 게임판에서 y,x 에서 시작하는
-단어 word의 존재 여부를 판별
-
- 함수의 내부에 일을 조각내서 기입해보자.
-
-```
-
-2. 기저 사례의 선택
-```
-1. 위치 x,y 에 있는 글자가 원하는 단어의 첫 글자가 아닌 경우 항상 실패
-2. (1번 경우에 해당되지 않을 경우) 원하는 단어가 한 글자인 경우 항상 성공
-
- 조건의 순서에 유의!
-
-```
-
-
-## 2-2 완전탐색(brutal + 재귀 활용)
-
-* 왜 쓰나요?
-
-
-[소풍문제](http://algospot.com/judge/problem/read/PICNIC)
-
-```
-이렇게 가능한 조합의 수를 계산하는 가장 간단한 방법은
-완전 탐색(brutal)을 통해서 필요한 조합을 전부 만들어 보는 것입니다.
-
-재귀 함수를 통해 전체 문제를 N/2 조각으로 나눠서 한 조각마다 두 학생을 짝지어 주는 것으로 진행 해봅시다.
-
-
-```
-
-*주의사항*
-
-```
- 위 아이디어를 그대로 진행하면 문제점이 있다.
-[0,1] [1,0] 와 같이 같은 쌍을 따로 셀 수 있다.
-
-다른 순서로 학생을 짝지어 주는 것도 다른 경우로 셀 수 있다.
-
-```
-
-
-*푼 다음에 확인 할 것*
-
-*정답
-
-```
-n = int(input());
-areFreineds = list(10,10);
-# taken[i] = i   i 번째 학생이 짝을 이미 찾았으면 true 아니면 false
-
-def countPairings(taken):
-    # 남은 학생들 중 가장 번호가 빠른 학생을 찾는다.
-    firstFree = -1
-    for i in range(0,n):
-        if(!taken[i]):
-            firstFree = i
-            break
+def bbq(n):
+    if(n < 0):
+        return 
+    print(n)
+    bbq(n-1)
     
-    # 기저사례 : 모든 학생이 짝을 찾았으면 한 가지 방법을 찾았으니 종료한다.
-    if(firstFree == -1):
-        return 1
-    ret = 0
-    for pairWith in range(firstFree+1, n):
-        if(!taken[firstFree] and areFriends[firstFree][pairWith]):
-            taken[firstFree] = taken[pairWith] = True
-            ret += countPairings(taken)
-            taken[firstFree] = taken[pairWith] = False
-    return ret
-```
 
-## 답의 수의 상한
 
 ```
- 모든 답을 생성해 가며 답의 수를 세는
-  재귀 호출 알고리즘은 답의 수에 정비례 하는 시간이 걸립니다.
- 가장 번호가 빠른 학생이 선택할 수 있는 짝 = 9명
- 다음 학생 = 7명
- 이렇게 진행하면
- 9 * 7 * 5 * 3 * 1 = 945
+*위 두 결과를 잘 따라가보자*
+*코드는 위에서부터 한줄씩 실행되고 함수가 시작되면 다시  함수의 선언부부터 시작이다.*
+
+# 글자 밀기
+
+## 1. a(문자) 를 b(정수)만큼 밀어보자
+## 재귀사용
+```
+#a  아스키
+#b  숫자
+a,b = input().split()
+b = int(b)
+
+def addValue(a,b): #재귀로 풀기
+  if(b == 0):
+    return a
+  else:
+    if(a == 'z'):
+      return addValue('A',b-1)
+    elif(a == 'Z'):
+      return addValue('a',b-1)
+    else:
+      return addValue(chr(ord(a)+1), b-1)
+
+```
+
+*위 코드는 음수일 때 적용이 안된다.*
+## 반복문
+```
+def addValue_2(a,b): #반복문으로 'z'다음문자는 'A' 이런식이면 이렇게
+  startAlpha = 'a'
+  move = 0
+  if('a'<= a <='z'):
+    startAlpha = 'a'
+    move = ord(a)-ord('a')
+  else:
+    startAlpha = 'A'
+    move = ord(a)- ord('A')
+
+
+  if ((move+b)//26)%2 == 0:
+    print('여긴데')
+    return(chr(ord(startAlpha) + (move+b)%26))
+  else:
+    if(startAlpha == 'A'):
+      startAlpha = 'a'
+    else:
+      startAlpha = 'A'
+    return(chr(ord(startAlpha) + (move+b)%26))
+```
+
+## 문자열을 밀때는 위 함수를 참조하여 해보자
+```
+def push_String(a,b): # 람다식도 좋고 map도 좋고 리스트 내장도 써도 되고~ 
+  return ''.join([addValue(x,b) for x in a])
+
+push_String('abc', 25)
+```
+
+
+## 10진수 2진수 변환
+```
+def deci_to_bin(a):
+  count = 0
+  ans = []
+  while(a > 2**count):
+    count += 1
+  for i in range(count,-1,-1):
+    if(a >= 2**i):
+      ans.append('1')
+      a -= 2**i
+    else:
+      ans.append('0')
+
+
+  return ''.join(ans)
+
+print(deci_to_bin(19))
+
+```
+
+## 10진수 2진수 변환(재귀)
+
+```
+def recur_deci_to_bin(a):
+  if(a == 0):
+    return ''
+  return recur_deci_to_bin(a//2)+str(a%2)
+recur_deci_to_bin(32)
 ```
