@@ -1,120 +1,154 @@
-# 0119
-## 재귀함수
+# Json
+<br><br>
 
-*함수 안에서 자신 혹은 다른 함수를 참고하여 트리를 만드는 형태*
+## Json?
+*데이터를 교환 할 때 정해진 규격*
+
+* WEB에서 AJAX 기술에 사용된다
+* AJAX 웹 개발 기법
+
+```
+{
+    "name" : "sanghai"
+    "price" : 4,900
+    "brand" : "mcdonald"
+
+}
+```
+
+*상당히 dict 구조와 유사하다*
+
+[https://jsonlint.com/](https://jsonlint.com/)
+*JSON 문법 검사기*
+
+
+[http://jsonviewer.stack.hu/](http://jsonviewer.stack.hu/)*JSON VIEWER*
+
+
+---
+<br>
+<br>
+
+# 파일 교환 Format (*객체,배열* )
+## 객체형(object) json
+* *객체의 key(이름)은 " "(쌍따옴표)로 묶어야 한다.*
+
+
+
+
 
 
 ```
-def bbq(n):
-    if(n < 0):
-        return 
-    bbq(n-1)
-    print(n)
+{
+	"HU": 35,
+	"HA": 32,
+	"HO": 46,
+	"HI": 51
+}
+```
+*다음의 문법을 검사해보자*
+
+
+*valid json 이면 viewer를 통해 확인해보자*
+
+
+```
+{
+	"HU": 35,
+	"HA": 32,
+	"HO": 46,
+	"HI": 51,
+    "HI": 55
+}
+```
+
+
+*이건 어떨까? 중복 key가 있다*
+*중복을 허용하지 않는다.*
+
+---
+<br><br>
+
+## 배열형(array) json
+
+```
+
+[1, 2, 3, 4, 5]
+
+```
+
+*이번에는 list형태이다. 프로그래밍 언어에서의 배열과 동일하다. key에 해당하는 값은 index번호를 가르킨다.*
+
+
+```
+[
+0:1
+1:2
+2:3
+3:4
+4:5
+]
+```
+
+*이러한 형태로 뷰어에서 보여지게 된다.*
+
+---
+<br><br>
+
+## 배열과 객체 자유롭게 다루기
+<br><br>
+```
+{
+	"group": "BTS",
+	"name": ["aaa", "bbb", "ccc", "ddd"],
+	"age": [35, "Unknown,56,55"]
+
+}
+
+```
+
+*객체 내 배열 형태로 저장이 가능하다.*
+
+
+<br><br>
+```
+{
+    "love" : ["chayoon","jihyo",["computer,notebook,mouse"]]
+    "dislike" : ["hungry",777]
+
+}
 
 
 
 ```
 
+*배열안에 배열도 가능하다*
+
+<br><br>
 
 ```
-
-
-def bbq(n):
-    if(n < 0):
-        return 
-    print(n)
-    bbq(n-1)
-    
-
+[[1,2,3],[3,4,5],{"A":3,"B":6,"OK":false},true]
 
 ```
-*위 두 결과를 잘 따라가보자*
-*코드는 위에서부터 한줄씩 실행되고 함수가 시작되면 다시  함수의 선언부부터 시작이다.*
+*배열 안에 객체도 가능하다*
 
-# 글자 밀기
+*true/false 자료형도 가능하다*
 
-## 1. a(문자) 를 b(정수)만큼 밀어보자
-## 재귀사용
+
+---
+<br><br>
+
+## 실습
 ```
-#a  아스키
-#b  숫자
-a,b = input().split()
-b = int(b)
-
-def addValue(a,b): #재귀로 풀기
-  if(b == 0):
-    return a
-  else:
-    if(a == 'z'):
-      return addValue('A',b-1)
-    elif(a == 'Z'):
-      return addValue('a',b-1)
-    else:
-      return addValue(chr(ord(a)+1), b-1)
+ {
+    "이름": "홍길동",
+    "나이": 25,
+    "성별": "여",
+    "주소": "서울특별시 양천구 목동",
+    "특기": ["농구", "도술"],
+    "가족관계": {"#": 2, "아버지": "홍판서", "어머니": "춘섬"},
+    "회사": "경기 수원시 팔달구 우만동"
+ }
 
 ```
-
-*위 코드는 음수일 때 적용이 안된다.*
-## 반복문
-```
-def addValue_2(a,b): #반복문으로 'z'다음문자는 'A' 이런식이면 이렇게
-  startAlpha = 'a'
-  move = 0
-  if('a'<= a <='z'):
-    startAlpha = 'a'
-    move = ord(a)-ord('a')
-  else:
-    startAlpha = 'A'
-    move = ord(a)- ord('A')
-
-
-  if ((move+b)//26)%2 == 0:
-    print('여긴데')
-    return(chr(ord(startAlpha) + (move+b)%26))
-  else:
-    if(startAlpha == 'A'):
-      startAlpha = 'a'
-    else:
-      startAlpha = 'A'
-    return(chr(ord(startAlpha) + (move+b)%26))
-```
-
-## 문자열을 밀때는 위 함수를 참조하여 해보자
-```
-def push_String(a,b): # 람다식도 좋고 map도 좋고 리스트 내장도 써도 되고~ 
-  return ''.join([addValue(x,b) for x in a])
-
-push_String('abc', 25)
-```
-
-
-## 10진수 2진수 변환
-```
-def deci_to_bin(a):
-  count = 0
-  ans = []
-  while(a > 2**count):
-    count += 1
-  for i in range(count,-1,-1):
-    if(a >= 2**i):
-      ans.append('1')
-      a -= 2**i
-    else:
-      ans.append('0')
-
-
-  return ''.join(ans)
-
-print(deci_to_bin(19))
-
-```
-
-## 10진수 2진수 변환(재귀)
-
-```
-def recur_deci_to_bin(a):
-  if(a == 0):
-    return ''
-  return recur_deci_to_bin(a//2)+str(a%2)
-recur_deci_to_bin(32)
-```
+*출처: [https://ko.wikipedia.org/wiki/JSON/예제](https://ko.wikipedia.org/wiki/JSON#%EC%98%88%EC%A0%9C)*
