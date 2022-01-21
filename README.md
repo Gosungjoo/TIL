@@ -1,6 +1,87 @@
 # 파이썬을 이용한 데이터 수집
 
-## JSON 데이터를 원하는 결과물로 변환
+<br><br><br><br>
+
+# 1. 형변환 예제
+## 치킨 이름을 꺼내기 dict / list 활용
+
+```
+def abc( value):
+
+
+// 치킨 이름만꺼낼 수 있을까?
+
+            
+abc([1, 2, ('A', 'B'), [1, 2, [("KFC", "MOMS", "BHC")]]])
+
+```
+```
+
+def abc( value):
+
+    print(value[3][2][0])
+
+            
+abc([1, 2, ('A', 'B'), [1, 2, [("KFC", "MOMS", "BHC")]]])
+```
+
+* 모든 형에 맞춰서 함수로도 가능하다.
+
+```
+def abc( value):
+
+
+    for i in value:
+        if(type(i) == type([])):
+            abc(i)
+        elif(type(i) == type(tuple())):
+            abc(i)
+        elif(type(i) == type('')):
+            if(len(i) > 1):
+                print(i)
+        else:
+            pass
+            
+abc([1, 2, ('A', 'B'), [1, 2, [("KFC", "MOMS", "BHC")]]])
+
+```
+
+<br><br>
+## 치킨 이름 꺼내기 2
+```
+d = dict()
+d["HI"] = [1, 2, 3, "KFC1"]
+d["OH"] = [1, 5, {"HO":14, "MY":119, "QQ":"KFC2"}]
+d[-153] = [(1, 2, (5, 6 ,"KFC3"))]
+
+# 치킨 이름만 꺼내보자
+
+```
+*답*
+
+
+```
+d = dict()
+d["HI"] = [1, 2, 3, "KFC1"]
+d["OH"] = [1, 5, {"HO":14, "MY":119, "QQ":"KFC2"}]
+d[-153] = [(1, 2, (5, 6 ,"KFC3"))]
+
+print(d['HI'][3])
+print(d['OH'][2]['QQ'])
+print(d[-153][0][2][2])
+```
+
+
+
+
+
+
+
+
+
+<br><br><br><br>
+
+# 2.JSON 데이터 변환
 
 ## 파일 입력 방법
  *open(file, mode = 'r', encoding =None)*
