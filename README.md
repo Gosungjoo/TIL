@@ -1,4 +1,8 @@
-# 알고리즘 문제
-* for문을 이용한 완전탐색
-* x,y좌표를 통해서 구하는 탐색
-.. 아직까지는 간단하다.
+
+# seletion sort
+
+# BS
+
+# Parametric algo
+
+
