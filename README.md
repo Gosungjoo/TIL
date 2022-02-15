@@ -74,6 +74,65 @@ print(bs(0,N-1,key))
 ```
 
 
-# Parametric algo
+# Parametric search
+* binary search 응용
+* max 값을 갱신하여 %를 표현
+```
+bettery='**********'
+
+bettery = list(bettery)
+
+def ps(s,e,max):
+    if(s > e):
+        return max
+    mid = (s + e)//2
+    if(bettery[mid] == '*'):
+        max = mid
+        return ps(mid+1, e, max)
+    elif(bettery[mid] == '_'):
+        return ps(s,mid-1,max)
 
 
+print((ps(0,len(bettery)-1,-1)+1)*10)
+```
+
+* 이차원 배열에서의 search
+
+```
+curser=[
+'#######',
+'#######',
+'#######',
+'##_____',
+'_______',
+'_______',
+]
+
+vertical = []
+
+for i in range(len(curser)):
+    vertical.append(curser[i][0])
+
+curser = list(curser)
+
+
+
+
+
+def ps(s,e,curser):
+    if(s > e):
+        return e
+    mid = (s + e)//2
+    if(curser[mid] == '#'):
+        return ps(mid+1, e,curser)
+    elif(curser[mid] == '_'):
+        return ps(s,mid-1,curser)
+
+
+
+
+v=ps(0,len(vertical),vertical)
+print(f'{v}행')
+
+print(f'{ps(0,len(curser[v]),curser[v])}열')
+```
