@@ -1,138 +1,95 @@
+# sliding window
 
-# seletion sort
-```
-[1,5,3,2,11,9]
+* 연속된 arr의 5개의 값의 합 중 max 값 출력
 
-앞에서부터 시작한다. index 0을 시작으로 그 뒤부터 비교하여 제일 작은 것으로 교체한다.
-
-ex) 
-[1,5,3,2,11,9] index : 0
-[1,3,5,2,11,9] index : 1
- -> index : 1의 처음 값은  5였으나
- 3이 그 다음 작으므로 위치를 바꾼다.
-[1,2,5,3,11,9] index : 1
- -> 3이였으나 다음을 확인했는데
-  2가 더 작으므로 위치를 바꾼다.
-
-  ....
-
-[1,2,3,5,9,11] 
 
 ```
-## CODE
-```
-arr = [1,5,3,2,11,9]
-index = 0
 
+arr = [3,7,4,1,1,100,2,3,4,5,7]
 
-while(index < len(arr)):
-    temp = index+1
-    arr[index]
-    for i in range(temp,len(arr)):
-        if arr[index] > arr[i]:
-            arr[index] , arr[i] = arr[i],arr[index]
-    index+= 1
-print(arr)
-```
-# bubble sort
-* 앞에서부터 2개씩 순차적으로 비교하여 앞뒤로 정렬한다.
-* 첫 줄을 다 돌리면 맨 끝에 가장 큰 값이 온다.
-* 끝에 정렬 된 경우 지역적으로 가장 큰 값이다. 즉 다음 줄에서는 포함하지 않는 것이 속도향상에 도움이 된다.
-* n번 실행하면 전부 정렬된다.
+max = 0
+for i in range(len(arr)-5):
+    t= sum(arr[i:i+5])
+    if(t > max):
+        max= t
+print(max)
 
 ```
-arr = [1,5,3,2,11,9]
 
-for i in range(len(arr)-1,0,-1):
-  for j in range(0,i):
-    if(arr[j] > arr[j+1]):
-      arr[j],arr[j+1] = arr[j+1],arr[j]
+* 이런식으로 풀면 O(n*m)의 속도가 나온다.
 
-print(arr)
+
 ```
-# binary search
-* 가장 기초 탐색법
-* 정렬된 데이터를 통해서 구할 수 있음
+arr = [3,7,4,1,1,100,2,3,4,5,7]
+t = sum(arr[0:5])
+max = t
+for i in range(6):
+  t = t+arr[5+i]-arr[i]
+  if (max < t):
+    max = t
+
 ```
-N = int(input())
+
+* 이렇게 슬라이딩 윈도우로 바꾸면 O(n)의 속도로 풀 수 있다.
+
+```
 arr = list(map(int,input().split()))
-key = int(input())
+N = int(input())
 
-arr.sort()
+t = sum(arr[0:N])
+max = t
+for i in range(len(arr)-N):
+  t = t+arr[N+i]-arr[i]
+  if (max < t):
+    max = t
+print(max)
+```
 
-def bs(s,e,key):
-    if(s > e):
-        return False
-    if(arr[(s+e)//2] == key):
-        return True
-    elif(arr[(s+e)//2] > key):
-        return bs(s,(s+e)//2 -1,key)
-    elif(arr[(s+e)//2] < key):
-        return bs((s+e)//2+1,e,key)
+* 구간 합을 먼저 한개 만들고 다음 1개의 원소를 더하고 맨 앞의 원소를 빼주면 간단하게 구현된다.
 
-print(bs(0,N-1,key))
+* 기존의 max값과 비교하여 최대값을 구하면 된다.
+
+
+
+
+# 투포인터
+
+* start, end의 index를 가져간다.
+* 현재 구간합이 작다면 end +1 증가
+* 연속된 구간합이 크다면 start +1 증가
+* 모든 경우를 확인할 때까지 2-4번 과정을 반복한다.
+
+
+```
+n = 5  # 데이터의 개수 N
+m = 5  # 찾고자하는 부분합 M
+
+count = 0
+interval_sum = 0
+end = 0
+
+# start를 차례대로 증가시키며 반복
+for start in range(n):
+    # end만큼 이동시키기
+    while interval_sum < m and end < n:
+        interval_sum += data[end]
+        end += 1
+    # 부분합이 m일 때 카운트 증가
+    if interval_sum == m:
+        count += 1
+    interval_sum -= data[start]
+
+print(count)
 ```
 
 
-# Parametric search
-* binary search 응용
-* max 값을 갱신하여 %를 표현
-```
-bettery='**********'
-
-bettery = list(bettery)
-
-def ps(s,e,max):
-    if(s > e):
-        return max
-    mid = (s + e)//2
-    if(bettery[mid] == '*'):
-        max = mid
-        return ps(mid+1, e, max)
-    elif(bettery[mid] == '_'):
-        return ps(s,mid-1,max)
 
 
-print((ps(0,len(bettery)-1,-1)+1)*10)
-```
+# 두가지의 차이점
 
-* 이차원 배열에서의 search
+* 슬라이딩 윈도 
+  * 구간이 정해져 있을 때,
+* 투포인터 
+  * 구간이 정해져 있지 않을 때도
 
-```
-curser=[
-'#######',
-'#######',
-'#######',
-'##_____',
-'_______',
-'_______',
-]
-
-vertical = []
-
-for i in range(len(curser)):
-    vertical.append(curser[i][0])
-
-curser = list(curser)
-
-
-
-
-
-def ps(s,e,curser):
-    if(s > e):
-        return e
-    mid = (s + e)//2
-    if(curser[mid] == '#'):
-        return ps(mid+1, e,curser)
-    elif(curser[mid] == '_'):
-        return ps(s,mid-1,curser)
-
-
-
-
-v=ps(0,len(vertical),vertical)
-print(f'{v}행')
-
-print(f'{ps(0,len(curser[v]),curser[v])}열')
-```
+ *속도는 둘다 O(n)*
