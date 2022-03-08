@@ -73,4 +73,10 @@ class Article(models.Model):
 * 버전확인
   * python manage.py  sqlmigrate [app이름] [번호]
 * 날짜 확인
-  * 
+
+
+# 명령어들 사용한
+python manage.py shell_plus
+* 콘솔에서 바로 python 명령어 실행
+
+pip install ipython
