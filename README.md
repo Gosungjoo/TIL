@@ -78,5 +78,131 @@ class Article(models.Model):
 # 명령어들 사용한
 python manage.py shell_plus
 * 콘솔에서 바로 python 명령어 실행
+* django-extensions 라이브러리 중 하나
 
 pip install ipython
+
+```
+article =Article()
+#인스턴스 생성
+
+article.title = '~~'
+#인스턴스 변수 변경
+
+article.save()
+#인스턴스 저장 호출
+
+# Classname.manager.API 형식
+
+
+
+```
+
+
+# CRUD
+
+* creat, read, update, delete
+
+
+## READ
+```
+#DB에 인스턴스 객체를 얻기 위한 쿼리문 날리기
+
+Article.objects.all()
+
+```
+
+## CREAT
+
+
+```
+art = Article()
+#클래스 이름으로 받기
+
+art.title = '~~'
+#클래스 내부의 속성에 저장
+
+art.content = 'django!'
+#클래스 내부의 속성에 저장
+
+art.save()
+
+```
+
+
+```
+art = Article(title="second", content="django")
+# 선언과 동시에 값 저장하기
+
+art.save()
+# DB에 적용
+
+```
+
+
+```
+
+Article.objects.create(title='third',content="django!!")
+#클래스에서 바로 적용, 저장할 필요가 없음, 다만 DB관리에서 주의가 필요함
+
+```
+
+* 쉽게 읽는 방법
+
+```
+# 매직 매서드를 클래스이름.py에 넣어준다.
+    def __str__(self):
+        return self.title
+```
+
+## READ
+
+```
+
+Article.object.all()
+# 전부 가져온다.
+
+```
+
+
+```
+
+Article.object.get(title='first')
+
+# title이 first인 것 '한개'만 가져옴
+# 없으면 DoesNotExist 예외 발생시킴
+# 2개 이상이여도 multiple ObjectReturned 예외 발생
+
+
+#사용할려면?
+
+Article.objects.get(id='2')
+Article.objects.get(pk='2')
+
+#이런식으로 unique한 value 사용
+
+
+```
+
+
+```
+
+Article.objects.filter(title='first')
+
+# title이 first인 모든 것을 가져옴
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
