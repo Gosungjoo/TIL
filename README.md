@@ -194,9 +194,30 @@ Article.objects.filter(title='first')
 ```
 
 
+## UPDATE
 
 
+```
 
+#잘못된 UPDATE의 방법
+
+art = Article.objects.get(title='second')
+art.title = "ssafy"
+art.save()
+
+# 유일한 값이 맞는치 확인해야함
+
+```
+## delete
+
+```
+
+art = Article.objects.get(pk=3)
+art.delete()
+art
+
+
+```
 
 
 
