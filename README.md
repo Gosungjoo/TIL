@@ -214,7 +214,7 @@ art.save()
 
 art = Article.objects.get(pk=3)
 art.delete()
-art
+
 
 
 ```
