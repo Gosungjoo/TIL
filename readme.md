@@ -102,3 +102,71 @@ if check[i] == 0:
 for j in range(i+i,a+1,i):
   check[j] = 1
 print(*answer)
+
+
+# 우선순위 큐
+
+# heapq
+
+
+
+# min heap
+```
+import heapq
+
+arr = []
+heapq.heappush(arr,4) # min heap
+heapq.heappush(arr,1)
+heapq.heappush(arr,9)
+heapq.heappush(arr,10)
+heapq.heappush(arr,3)
+
+print(heapq.heappop(arr)) # min heap pop
+
+
+
+arr = [2,13,3,1,5]
+heapq.heapfy(arr)
+
+```
+
+```
+import heapq
+
+arr=[]
+heapq.heappush(arr,[4,'gg'])
+heapq.heappush(arr,[1,'banana'])
+heapq.heappush(arr,[6,'as'])
+heapq.heappush(arr,[9,'adsf'])
+heapq.heappush(arr,[2,'asdaw1qweq'])
+
+while arr:
+    print(heapq.heappop(arr)[1])
+```
+
+
+# max heap 만들기
+
+arr = []
+heapq.heappush(arr,-4) # min heap
+heapq.heappush(arr,-1)
+heapq.heappush(arr,-9)
+heapq.heappush(arr,-10)
+heapq.heappush(arr,-3)
+
+
+1. 튜플이용
+2. 음수 사용
+
+arr = list(map(lammbda x:-x,arr))
+
+
+
+# 해쉬
+# 세그먼트 트리 
+# 에드혹
+
+
+# 다익스트라
+# 벨만 포드
+# 플루이드 와샬
